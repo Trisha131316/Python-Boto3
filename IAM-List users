@@ -1,0 +1,23 @@
+creating the first Python Boto3 script:
+Getting the list of IAM users from my AWS Account:
+
+import boto3
+from pprint import pprint
+aws_console= boto3.session.Session(profile_name="default")
+iam_console= aws_console.client(service_name="iam")
+result= iam_console.list_users()
+pprint(result)
+
+With the above script , you would just get the jason output with all the details but if you just want the name of the user, here is the modified script:
+
+
+import boto3
+from pprint import pprint
+aws_console= boto3.session.Session(profile_name="default")
+iam_console= aws_console.client(service_name="iam")
+result= iam_console.list_users()
+for each_user in result["Users"]:
+    print(each_user["UserName"])
+
+
+
